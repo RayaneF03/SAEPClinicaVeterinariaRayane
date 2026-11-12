@@ -41,16 +41,25 @@ Para usar o SQL Server, altere `DatabaseProvider` para `SqlServer` no arquivo
 Depois de salvar as models, execute os comandos abaixo na pasta que contém o `.csproj`:
 
 ```bash
-dotnet ef migrations add CriacaoInicial
-dotnet ef database update
-dotnet ef migrations script --idempotent --output saep_db.sql
+DatabaseProvider=SqlServer dotnet ef database update
+DatabaseProvider=SqlServer dotnet ef migrations script --idempotent --output saep_db.sql
 ```
 
-1. `migrations add` compara as models com a estrutura anterior e cria uma migration em C#.
+1. A migration `CriacaoInicial` já existe na pasta `Migrations`; não execute `migrations add CriacaoInicial` novamente.
 2. `database update` executa as migrations no SQL Server.
 3. `migrations script` produz o arquivo `saep_db.sql` para acompanhar a entrega.
 
 O projeto já contém a migration inicial e o script gerado em `saep_db.sql`.
+
+Se as models forem alteradas no futuro, crie uma migration com outro nome:
+
+```bash
+DatabaseProvider=SqlServer dotnet ef migrations add AjustesDoModelo
+DatabaseProvider=SqlServer dotnet ef database update
+```
+
+O prefixo `DatabaseProvider=SqlServer` é obrigatório para esses comandos porque o
+modo de desenvolvimento usa SQLite local. O script idempotente não é suportado pelo SQLite.
 
 ## Funcionalidades
 

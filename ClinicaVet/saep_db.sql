@@ -113,8 +113,7 @@ END;
 COMMIT;
 GO
 
--- Dados demonstrativos. Os valores de CpfCriptografado abaixo são cifras,
--- nunca CPFs em texto puro. O seed da aplicação também protege os CPFs.
+-- Dados demonstrativos protegidos e hashes de senha.
 IF NOT EXISTS (SELECT 1 FROM [Usuarios])
 BEGIN
     SET IDENTITY_INSERT [Usuarios] ON;
