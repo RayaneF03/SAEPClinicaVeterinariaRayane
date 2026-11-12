@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ClinicaVet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header><nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+    <div class="container"><a class="navbar-brand" asp-controller="Home" asp-action="Index">ClinicaVet</a>
+    <div class="navbar-nav">
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a class="nav-link" asp-controller="Tutores" asp-action="Index">Tutores</a>
+        <a class="nav-link" asp-controller="Pets" asp-action="Index">Pets</a>
+        <a class="nav-link" asp-controller="Agendamentos" asp-action="Index">Agendamentos</a>
+        <span class="navbar-text ms-3">Olá, @User.Identity.Name</span>
+        <form asp-controller="Auth" asp-action="Sair" method="post" class="ms-3"><button class="btn btn-link nav-link" type="submit">Sair</button></form>
+    }
+    else { <a class="nav-link" asp-controller="Auth" asp-action="Login">Entrar</a> }
+    </div></div>
+</nav></header>
+<main class="container pb-4">@RenderBody()</main>
+<footer class="border-top py-3"><div class="container text-muted">&copy; 2026 - ClinicaVet</div></footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body></html>

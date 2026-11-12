@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>rect{fill:#eef5ff;stroke:#1d4ed8;stroke-width:2} text{font:16px sans-serif;fill:#111827}.title{font-weight:bold;fill:#1e3a8a}.rel{stroke:#374151;stroke-width:2;fill:none}</style>
+<rect x="40" y="40" width="260" height="180" rx="8"/><text x="60" y="70" class="title">USUARIO</text><text x="60" y="105">PK Id</text><text x="60" y="135">Nome</text><text x="60" y="165">Email (UNIQUE)</text><text x="60" y="195">SenhaHash</text>
+<rect x="370" y="40" width="300" height="220" rx="8"/><text x="390" y="70" class="title">TUTOR</text><text x="390" y="105">PK Id</text><text x="390" y="135">Nome, Email</text><text x="390" y="165">CpfCriptografado</text><text x="390" y="195">Telefone</text><text x="390" y="225">1 ─── N PET</text>
+<rect x="730" y="40" width="230" height="220" rx="8"/><text x="750" y="70" class="title">PET</text><text x="750" y="105">PK Id</text><text x="750" y="135">Nome, Especie</text><text x="750" y="165">DataNascimento</text><text x="750" y="195">FK TutorId</text><text x="750" y="225">1 ─── N</text>
+<rect x="370" y="350" width="300" height="130" rx="8"/><text x="390" y="380" class="title">AGENDAMENTO</text><text x="390" y="415">PK Id, DataHora</text><text x="390" y="445">Servico, FK PetId</text>
+<path class="rel" d="M670 170 L730 170 M845 260 L520 350"/>
+</svg>

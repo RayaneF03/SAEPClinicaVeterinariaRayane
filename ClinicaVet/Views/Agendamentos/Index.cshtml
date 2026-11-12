@@ -1,0 +1,6 @@
+@model IEnumerable<ClinicaVet.Models.Agendamento>
+@{ ViewData["Title"] = "Agendamentos"; }
+<div class="d-flex justify-content-between align-items-center"><h1>Agendamentos</h1><a class="btn btn-primary" asp-action="Create">Novo agendamento</a></div>
+<table class="table table-striped"><thead><tr><th>Data e hora</th><th>Serviço</th><th>Pet</th><th>Tutor</th><th></th></tr></thead><tbody>
+@foreach (var item in Model) { <tr><td>@item.DataHora.ToString("dd/MM/yyyy HH:mm")</td><td>@item.Servico</td><td>@item.Pet?.Nome</td><td>@item.Pet?.Tutor?.Nome</td><td><a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> | <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> | <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a></td></tr> }
+</tbody></table>

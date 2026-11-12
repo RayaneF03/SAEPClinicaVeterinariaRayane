@@ -1,0 +1,4 @@
+@model ClinicaVet.Models.Pet
+@{ ViewData["Title"] = "Detalhes do pet"; }
+<h1>Detalhes do pet</h1><dl class="row"><dt class="col-sm-3">Nome</dt><dd class="col-sm-9">@Model.Nome</dd><dt class="col-sm-3">Espécie</dt><dd class="col-sm-9">@Model.Especie</dd><dt class="col-sm-3">Nascimento</dt><dd class="col-sm-9">@Model.DataNascimento</dd><dt class="col-sm-3">Tutor</dt><dd class="col-sm-9">@Model.Tutor?.Nome</dd></dl>
+<a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> <a class="btn btn-secondary" asp-action="Index">Voltar</a>

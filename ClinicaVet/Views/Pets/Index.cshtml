@@ -1,0 +1,7 @@
+@model IEnumerable<ClinicaVet.Models.Pet>
+@{ ViewData["Title"] = "Pets"; }
+<div class="d-flex justify-content-between align-items-center"><h1>Pets</h1><a class="btn btn-primary" asp-action="Create">Novo pet</a></div>
+<table class="table table-striped"><thead><tr><th>Nome</th><th>Espécie</th><th>Nascimento</th><th>Tutor</th><th></th></tr></thead><tbody>
+@if (TempData["Erro"] is string erro) { <div class="alert alert-danger">@erro</div> }
+@foreach (var item in Model) { <tr><td>@item.Nome</td><td>@item.Especie</td><td>@item.DataNascimento</td><td>@item.Tutor?.Nome</td><td><a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> | <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> | <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a></td></tr> }
+</tbody></table>

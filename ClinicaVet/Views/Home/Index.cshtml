@@ -1,0 +1,5 @@
+@{ ViewData["Title"] = "Início"; }
+<div class="p-5 bg-light rounded-3"><h1>Clínica Veterinária</h1><p>Controle de tutores, pets e agendamentos.</p>
+@if (User.Identity?.IsAuthenticated != true) { <a class="btn btn-primary" asp-controller="Auth" asp-action="Login">Acessar sistema</a> }
+else { <a class="btn btn-primary" asp-controller="Agendamentos" asp-action="Index">Ver agenda</a> }
+</div>
