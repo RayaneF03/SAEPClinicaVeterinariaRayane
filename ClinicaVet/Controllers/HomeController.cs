@@ -6,6 +6,7 @@ namespace ClinicaVet.Controllers;
 
 public class HomeController : Controller
 {
+    // Controlador das páginas públicas de início e privacidade.
     public IActionResult Index()
     {
         return View();

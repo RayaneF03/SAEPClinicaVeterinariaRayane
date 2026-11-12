@@ -4,6 +4,7 @@ namespace ClinicaVet.Models;
 
 public class Tutor
 {
+    // Identificador único do tutor.
     public int Id { get; set; }
 
     [Required, StringLength(100)]
@@ -20,3 +21,7 @@ public class Tutor
 
     public ICollection<Pet> Pets { get; set; } = new List<Pet>();
 }
+    // Dados básicos usados na listagem e na busca.
+    // CPF protegido; nenhum CPF puro é armazenado nesta entidade.
+    // Telefone é opcional.
+    // Relação de um tutor para muitos pets.

@@ -10,6 +10,7 @@ namespace ClinicaVet.Controllers;
 [Authorize]
 public class AgendamentosController(ClinicaContext context) : Controller
 {
+    // Lista a agenda em ordem cronológica e carrega pet e tutor com Include/ThenInclude.
     public async Task<IActionResult> Index() => View(await context.Agendamentos.Include(a => a.Pet).ThenInclude(p => p!.Tutor).AsNoTracking().OrderBy(a => a.DataHora).ToListAsync());
 
     public async Task<IActionResult> Create() { await CarregarPets(); return View(new Agendamento { DataHora = DateTime.Now.AddHours(1) }); }
@@ -24,6 +25,7 @@ public class AgendamentosController(ClinicaContext context) : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Agendamento item)
     {
+        // Valida data, serviço e pet antes de registrar o agendamento.
         if (!ModelState.IsValid) { await CarregarPets(item.PetId); return View(item); }
         context.Agendamentos.Add(item); await context.SaveChangesAsync(); return RedirectToAction(nameof(Index));
     }
@@ -54,6 +56,7 @@ public class AgendamentosController(ClinicaContext context) : Controller
     [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        // Agendamento pode ser excluído sem dependências filhas.
         var item = await context.Agendamentos.FindAsync(id);
         if (item is null) return NotFound();
         context.Agendamentos.Remove(item);
@@ -62,5 +65,6 @@ public class AgendamentosController(ClinicaContext context) : Controller
     }
 
     private async Task CarregarPets(int? selecionado = null) =>
+        // Exibe o pet junto com o nome do tutor para facilitar a escolha.
         ViewData["PetId"] = new SelectList(await context.Pets.Include(p => p.Tutor).OrderBy(p => p.Nome).Select(p => new { p.Id, Nome = p.Nome + " - " + p.Tutor!.Nome }).ToListAsync(), "Id", "Nome", selecionado);
 }

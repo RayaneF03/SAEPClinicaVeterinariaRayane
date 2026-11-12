@@ -5,3 +5,4 @@ obj/
 *.suo
 appsettings.Production.json
 Properties/ServiceDependencies/
+*.db

@@ -4,6 +4,7 @@ namespace ClinicaVet.ViewModels;
 
 public class TutorFormViewModel
 {
+    // ViewModel separado para impedir que CpfCriptografado vá para a tela.
     public int Id { get; set; }
 
     [Required, StringLength(100)]

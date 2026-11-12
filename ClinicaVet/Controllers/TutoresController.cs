@@ -11,6 +11,7 @@ namespace ClinicaVet.Controllers;
 [Authorize]
 public class TutoresController(ClinicaContext context, ICpfCripto cpfCripto) : Controller
 {
+    // Lista tutores e aplica filtro opcional por nome ou email.
     public async Task<IActionResult> Index(string? termo)
     {
         var query = context.Tutores.AsNoTracking();
@@ -22,6 +23,7 @@ public class TutoresController(ClinicaContext context, ICpfCripto cpfCripto) : C
 
     public IActionResult Create() => View(new TutorFormViewModel());
 
+    // Mostra os dados públicos do tutor e seus pets, sem revelar o CPF.
     public async Task<IActionResult> Details(int? id)
     {
         if (id is null) return NotFound();
@@ -32,6 +34,7 @@ public class TutoresController(ClinicaContext context, ICpfCripto cpfCripto) : C
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(TutorFormViewModel model)
     {
+        // CPF é obrigatório no cadastro e será protegido antes do INSERT.
         if (string.IsNullOrWhiteSpace(model.CpfNovo))
             ModelState.AddModelError(nameof(model.CpfNovo), "CPF é obrigatório.");
         if (!ModelState.IsValid) return View(model);
@@ -50,6 +53,7 @@ public class TutoresController(ClinicaContext context, ICpfCripto cpfCripto) : C
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, TutorFormViewModel model)
     {
+        // Atualiza somente campos permitidos pelo ViewModel; CPF continua protegido.
         if (id != model.Id) return NotFound();
         var tutor = await context.Tutores.FindAsync(id);
         if (tutor is null) return NotFound();
@@ -70,6 +74,7 @@ public class TutoresController(ClinicaContext context, ICpfCripto cpfCripto) : C
     [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        // Impede remover tutor que ainda possui pets relacionados.
         var tutor = await context.Tutores.FindAsync(id);
         if (tutor is null) return NotFound();
         if (await context.Pets.AnyAsync(p => p.TutorId == id))

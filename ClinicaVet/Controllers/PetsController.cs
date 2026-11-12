@@ -10,10 +10,12 @@ namespace ClinicaVet.Controllers;
 [Authorize]
 public class PetsController(ClinicaContext context) : Controller
 {
+    // Lista pets já carregando o tutor para exibição.
     public async Task<IActionResult> Index() => View(await context.Pets.Include(p => p.Tutor).AsNoTracking().OrderBy(p => p.Nome).ToListAsync());
 
     public async Task<IActionResult> Create()
     {
+        // Prepara a lista de tutores para o campo select da view.
         await CarregarTutores();
         return View(new Pet());
     }
@@ -28,6 +30,7 @@ public class PetsController(ClinicaContext context) : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Pet pet)
     {
+        // A validação exige um TutorId antes de salvar o pet.
         if (!ModelState.IsValid) { await CarregarTutores(pet.TutorId); return View(pet); }
         context.Pets.Add(pet); await context.SaveChangesAsync(); return RedirectToAction(nameof(Index));
     }
@@ -58,6 +61,7 @@ public class PetsController(ClinicaContext context) : Controller
     [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        // Preserva o histórico e impede excluir pets com agendamentos.
         var pet = await context.Pets.FindAsync(id);
         if (pet is null) return NotFound();
         if (await context.Agendamentos.AnyAsync(a => a.PetId == id))
@@ -71,5 +75,6 @@ public class PetsController(ClinicaContext context) : Controller
     }
 
     private async Task CarregarTutores(int? selecionado = null) =>
+        // Monta o select com o tutor atualmente selecionado.
         ViewData["TutorId"] = new SelectList(await context.Tutores.OrderBy(t => t.Nome).ToListAsync(), "Id", "Nome", selecionado);
 }

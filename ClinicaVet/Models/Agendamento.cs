@@ -4,6 +4,7 @@ namespace ClinicaVet.Models;
 
 public class Agendamento
 {
+    // Identificador único do agendamento.
     public int Id { get; set; }
 
     [Required]
@@ -17,3 +18,6 @@ public class Agendamento
 
     public Pet? Pet { get; set; }
 }
+    // Data e hora em que o serviço ocorrerá.
+    // Descrição do serviço veterinário.
+    // Chave estrangeira obrigatória para o pet.

@@ -4,6 +4,7 @@ namespace ClinicaVet.ViewModels;
 
 public class LoginViewModel
 {
+    // Dados enviados pelo formulário de autenticação.
     [Required, EmailAddress]
     public string Email { get; set; } = string.Empty;
 
