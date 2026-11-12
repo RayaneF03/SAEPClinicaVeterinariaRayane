@@ -129,9 +129,9 @@ IF NOT EXISTS (SELECT 1 FROM [Tutores])
 BEGIN
     SET IDENTITY_INSERT [Tutores] ON;
     INSERT INTO [Tutores] ([Id], [Nome], [Email], [CpfCriptografado], [Telefone]) VALUES
-    (1, N'Ana Souza', N'ana@example.com', N'CfDJ8D-seed-cpf-1-protegido', N'(11) 99999-0001'),
-    (2, N'Bruno Lima', N'bruno@example.com', N'CfDJ8D-seed-cpf-2-protegido', N'(11) 99999-0002'),
-    (3, N'Carla Mendes', N'carla@example.com', N'CfDJ8D-seed-cpf-3-protegido', N'(11) 99999-0003');
+    (1, N'Ana Souza', N'ana@example.com', N'CfDJ8EZtvrWqcPNDnAXaFgSW8wqaFz5FmPFVEHYWRuELjlJDuEVakOg-cKqlI7MhZivijfottjtpfXovp9l4DRdwoQ7utZ7D4G-WXEkxT9fI8K8bizb0_54GMmoupqfCQrkuug', N'(11) 99999-0001'),
+    (2, N'Bruno Lima', N'bruno@example.com', N'CfDJ8EZtvrWqcPNDnAXaFgSW8wpMEp3B8ef9YUMFOkB3jTyLEGJmn4nKFQlpf30Cmvti4Dz3W2XW3LA3hWtfzGmxK8Ak5t5l3M_3bszMDtThqcf2aPuDZASUe-UNSmDBrVZEtQ', N'(11) 99999-0002'),
+    (3, N'Carla Mendes', N'carla@example.com', N'CfDJ8EZtvrWqcPNDnAXaFgSW8wpuXScKzHaWEkayldOEPHFWhA1rrq9-04H3VdbbB3_kYPZEUGRWGfqV8XHSWXj5ixyVj53DMHenwgUFYeNTy1IGTs1-4wDHvyoYVri-LbUp1A', N'(11) 99999-0003');
     SET IDENTITY_INSERT [Tutores] OFF;
 END;
 

@@ -19,3 +19,9 @@ Controlar tutores, pets e agendamentos, reduzindo perdas e duplicidades.
 
 ## DER
 `der.svg` representa as tabelas, chaves e relacionamentos do sistema.
+
+## Execução e validação
+Com a plataforma rodando, o usuário deve testar login inválido e válido, logout,
+busca e edição de tutores, cadastro de pets com tutor, agenda ordenada e alteração
+de data. O seed inicial e o script SQL fornecem três usuários, três tutores,
+três pets e três agendamentos.

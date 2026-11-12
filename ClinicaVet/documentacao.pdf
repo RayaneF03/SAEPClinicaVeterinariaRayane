@@ -12,9 +12,9 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 1131 >>
+<< /Length 1270 >>
 stream
-BT /F1 11 Tf 50 780 Td 14 TL (DOCUMENTACAO - CLINICAVET) Tj T* () Tj T* (Objetivo) Tj T* (Controlar tutores, pets e agendamentos, reduzindo perdas e duplicidades.) Tj T* () Tj T* (Requisitos funcionais) Tj T* (RF01 - Autenticar usuario, validar falha e expirar sessao.) Tj T* (RF02 - Cadastrar, listar, buscar e editar tutores.) Tj T* (RF03 - Cadastrar e editar pets vinculados a tutor.) Tj T* (RF04 - Listar agendamentos por data, com pet e tutor, e editar a data.) Tj T* () Tj T* (Regras de negocio) Tj T* (RN01 - CPF e cifrado antes de persistir e nao e exibido.) Tj T* (RN02 - O seed cria ao menos tres registros em cada tabela.) Tj T* (RN03 - Pet exige tutor e agendamento exige pet.) Tj T* () Tj T* (Tecnologias) Tj T* (.NET 10, ASP.NET Core MVC, Entity Framework Core, SQL Server e VS Code.) Tj T* () Tj T* (Tabelas e relacionamentos) Tj T* (USUARIO \(Id PK, Nome, Email UNIQUE, SenhaHash\)) Tj T* (TUTOR \(Id PK, Nome, Email, CpfCriptografado, Telefone\)) Tj T* (PET \(Id PK, Nome, Especie, DataNascimento, TutorId FK\)) Tj T* (AGENDAMENTO \(Id PK, DataHora, Servico, PetId FK\)) Tj T* (TUTOR 1:N PET 1:N AGENDAMENTO) Tj ET
+BT /F1 11 Tf 50 780 Td 14 TL (DOCUMENTACAO - CLINICAVET) Tj T* () Tj T* (Objetivo) Tj T* (Controlar tutores, pets e agendamentos, reduzindo perdas e duplicidades.) Tj T* () Tj T* (Requisitos funcionais) Tj T* (RF01 - Autenticar usuario, validar falha e expirar sessao.) Tj T* (RF02 - Cadastrar, listar, buscar e editar tutores.) Tj T* (RF03 - Cadastrar e editar pets vinculados a tutor.) Tj T* (RF04 - Listar agendamentos por data, com pet e tutor, e editar a data.) Tj T* () Tj T* (Regras de negocio) Tj T* (RN01 - CPF e cifrado antes de persistir.) Tj T* (RN02 - Cada tabela possui tres registros de demonstracao.) Tj T* (RN03 - Pet exige tutor e agendamento exige pet.) Tj T* () Tj T* (Teste obrigatorio) Tj T* (Com a plataforma rodando, testar login invalido e valido, logout, busca, edicao, detalhes, exclusao, pets, agenda e API.) Tj T* () Tj T* (Tecnologias) Tj T* (.NET 10, ASP.NET Core MVC, Entity Framework Core, SQL Server, SQLite local e VS Code.) Tj T* () Tj T* (DER) Tj T* (USUARIO \(Id PK, Nome, Email UNIQUE, SenhaHash\)) Tj T* (TUTOR \(Id PK, Nome, Email, CpfCriptografado, Telefone\)) Tj T* (PET \(Id PK, Nome, Especie, DataNascimento, TutorId FK\)) Tj T* (AGENDAMENTO \(Id PK, DataHora, Servico, PetId FK\)) Tj T* (TUTOR 1:N PET 1:N AGENDAMENTO) Tj ET
 endstream
 endobj
 xref
@@ -28,5 +28,5 @@ xref
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-1494
+1633
 %%EOF
